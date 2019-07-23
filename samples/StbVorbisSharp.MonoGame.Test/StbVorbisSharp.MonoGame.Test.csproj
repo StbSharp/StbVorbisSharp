@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Authors>StbVorbisSharpTeam</Authors>
+    <Product>StbVorbisSharp</Product>
+    <TargetFramework>net45</TargetFramework>
+    <Description>C# port of stb_vorbic.c</Description>
+    <PackageLicense>https://github.com/StbSharp/StbVorbisSharp#license</PackageLicense>
+    <PackageProjectUrl>https://github.com/StbSharp/StbVorbisSharp</PackageProjectUrl>
+    <NoWarn>NU1701</NoWarn>
+    <AssemblyName>StbVorbisSharp.MonoGame.Test</AssemblyName>
+    <RootNamespace>StbVorbisSharp</RootNamespace>
+    <Version>1.0.0.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ApplicationIcon />
+    <OutputType>WinExe</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.7.1.189" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\StbVorbisSharp\StbVorbisSharp.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="music.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
