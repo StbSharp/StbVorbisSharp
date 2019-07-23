@@ -40,6 +40,8 @@ namespace StbVorbisSharp
 
 		public static float[] inverse_db_table = { 1.0649863e-07f, 1.1341951e-07f, 1.2079015e-07f, 1.2863978e-07f, 1.3699951e-07f, 1.4590251e-07f, 1.5538408e-07f, 1.6548181e-07f, 1.7623575e-07f, 1.8768855e-07f, 1.9988561e-07f, 2.1287530e-07f, 2.2670913e-07f, 2.4144197e-07f, 2.5713223e-07f, 2.7384213e-07f, 2.9163793e-07f, 3.1059021e-07f, 3.3077411e-07f, 3.5226968e-07f, 3.7516214e-07f, 3.9954229e-07f, 4.2550680e-07f, 4.5315863e-07f, 4.8260743e-07f, 5.1396998e-07f, 5.4737065e-07f, 5.8294187e-07f, 6.2082472e-07f, 6.6116941e-07f, 7.0413592e-07f, 7.4989464e-07f, 7.9862701e-07f, 8.5052630e-07f, 9.0579828e-07f, 9.6466216e-07f, 1.0273513e-06f, 1.0941144e-06f, 1.1652161e-06f, 1.2409384e-06f, 1.3215816e-06f, 1.4074654e-06f, 1.4989305e-06f, 1.5963394e-06f, 1.7000785e-06f, 1.8105592e-06f, 1.9282195e-06f, 2.0535261e-06f, 2.1869758e-06f, 2.3290978e-06f, 2.4804557e-06f, 2.6416497e-06f, 2.8133190e-06f, 2.9961443e-06f, 3.1908506e-06f, 3.3982101e-06f, 3.6190449e-06f, 3.8542308e-06f, 4.1047004e-06f, 4.3714470e-06f, 4.6555282e-06f, 4.9580707e-06f, 5.2802740e-06f, 5.6234160e-06f, 5.9888572e-06f, 6.3780469e-06f, 6.7925283e-06f, 7.2339451e-06f, 7.7040476e-06f, 8.2047000e-06f, 8.7378876e-06f, 9.3057248e-06f, 9.9104632e-06f, 1.0554501e-05f, 1.1240392e-05f, 1.1970856e-05f, 1.2748789e-05f, 1.3577278e-05f, 1.4459606e-05f, 1.5399272e-05f, 1.6400004e-05f, 1.7465768e-05f, 1.8600792e-05f, 1.9809576e-05f, 2.1096914e-05f, 2.2467911e-05f, 2.3928002e-05f, 2.5482978e-05f, 2.7139006e-05f, 2.8902651e-05f, 3.0780908e-05f, 3.2781225e-05f, 3.4911534e-05f, 3.7180282e-05f, 3.9596466e-05f, 4.2169667e-05f, 4.4910090e-05f, 4.7828601e-05f, 5.0936773e-05f, 5.4246931e-05f, 5.7772202e-05f, 6.1526565e-05f, 6.5524908e-05f, 6.9783085e-05f, 7.4317983e-05f, 7.9147585e-05f, 8.4291040e-05f, 8.9768747e-05f, 9.5602426e-05f, 0.00010181521f, 0.00010843174f, 0.00011547824f, 0.00012298267f, 0.00013097477f, 0.00013948625f, 0.00014855085f, 0.00015820453f, 0.00016848555f, 0.00017943469f, 0.00019109536f, 0.00020351382f, 0.00021673929f, 0.00023082423f, 0.00024582449f, 0.00026179955f, 0.00027881276f, 0.00029693158f, 0.00031622787f, 0.00033677814f, 0.00035866388f, 0.00038197188f, 0.00040679456f, 0.00043323036f, 0.00046138411f, 0.00049136745f, 0.00052329927f, 0.00055730621f, 0.00059352311f, 0.00063209358f, 0.00067317058f, 0.00071691700f, 0.00076350630f, 0.00081312324f, 0.00086596457f, 0.00092223983f, 0.00098217216f, 0.0010459992f, 0.0011139742f, 0.0011863665f, 0.0012634633f, 0.0013455702f, 0.0014330129f, 0.0015261382f, 0.0016253153f, 0.0017309374f, 0.0018434235f, 0.0019632195f, 0.0020908006f, 0.0022266726f, 0.0023713743f, 0.0025254795f, 0.0026895994f, 0.0028643847f, 0.0030505286f, 0.0032487691f, 0.0034598925f, 0.0036847358f, 0.0039241906f, 0.0041792066f, 0.0044507950f, 0.0047400328f, 0.0050480668f, 0.0053761186f, 0.0057254891f, 0.0060975636f, 0.0064938176f, 0.0069158225f, 0.0073652516f, 0.0078438871f, 0.0083536271f, 0.0088964928f, 0.009474637f, 0.010090352f, 0.010746080f, 0.011444421f, 0.012188144f, 0.012980198f, 0.013823725f, 0.014722068f, 0.015678791f, 0.016697687f, 0.017782797f, 0.018938423f, 0.020169149f, 0.021479854f, 0.022875735f, 0.024362330f, 0.025945531f, 0.027631618f, 0.029427276f, 0.031339626f, 0.033376252f, 0.035545228f, 0.037855157f, 0.040315199f, 0.042935108f, 0.045725273f, 0.048696758f, 0.051861348f, 0.055231591f, 0.058820850f, 0.062643361f, 0.066714279f, 0.071049749f, 0.075666962f, 0.080584227f, 0.085821044f, 0.091398179f, 0.097337747f, 0.10366330f, 0.11039993f, 0.11757434f, 0.12521498f, 0.13335215f, 0.14201813f, 0.15124727f, 0.16107617f, 0.17154380f, 0.18269168f, 0.19456402f, 0.20720788f, 0.22067342f, 0.23501402f, 0.25028656f, 0.26655159f, 0.28387361f, 0.30232132f, 0.32196786f, 0.34289114f, 0.36517414f, 0.38890521f, 0.41417847f, 0.44109412f, 0.46975890f, 0.50028648f, 0.53279791f, 0.56742212f, 0.60429640f, 0.64356699f, 0.68538959f, 0.72993007f, 0.77736504f, 0.82788260f, 0.88168307f, 0.9389798f, 1.0f };
 
+		public static int[,] channel_selector = { { 0, 0 }, { 1, 0 }, { 2, 4 } };
+
 		[StructLayout(LayoutKind.Sequential)]
 		public struct stb_vorbis_alloc
 		{
@@ -99,10 +101,10 @@ namespace StbVorbisSharp
 			public fixed byte class_dimensions[16];
 			public fixed byte class_subclasses[16];
 			public fixed byte class_masterbooks[16];
-			public fixed short subclass_books[16];
+			public fixed short subclass_books[16 * 8];
 			public fixed ushort Xlist[31 * 8 + 2];
 			public fixed byte sorted_order[31 * 8 + 2];
-			public fixed byte neighbors[31 * 8 + 2];
+			public fixed byte neighbors[(31 * 8 + 2) * 2];
 			public byte floor1_multiplier;
 			public byte rangebits;
 			public int values;
@@ -170,7 +172,7 @@ namespace StbVorbisSharp
 		public static int error(stb_vorbis f, int e)
 		{
 			f.error = (int)(e);
-			if ((f.eof == 0) && (e != STBVorbisError.VORBIS_need_more_data))
+			if ((f.eof == 0) && (e != (int)STBVorbisError.VORBIS_need_more_data))
 			{
 				f.error = (int)(e);
 			}
@@ -351,7 +353,6 @@ namespace StbVorbisSharp
 			}
 			if ((k) == (n))
 			{
-				(void)((!!((c->sorted_entries) == (0))) || (_wassert("c->sorted_entries == 0", "stb_vorbis.c", (uint)(1053)), 0));
 				return (int)(1);
 			}
 
@@ -376,15 +377,12 @@ namespace StbVorbisSharp
 					return (int)(0);
 				}
 				res = (uint)(available[z]);
-				(void)((!!(((z) >= (0)) && ((z) < (32)))) || (_wassert("z >= 0 && z < 32", "stb_vorbis.c", (uint)(1076)), 0));
 				available[z] = (uint)(0);
 				add_entry(c, (uint)(bit_reverse((uint)(res))), (int)(i), (int)(m++), (int)(len[i]), values);
 				if (z != len[i])
 				{
-					(void)((!!(((len[i]) >= (0)) && ((len[i]) < (32)))) || (_wassert("len[i] >= 0 && len[i] < 32", "stb_vorbis.c", (uint)(1081)), 0));
 					for (y = (int)(len[i]); (y) > (z); --y)
 					{
-						(void)((!!((available[y]) == (0))) || (_wassert("available[y] == 0", "stb_vorbis.c", (uint)(1083)), 0));
 						available[y] = (uint)(res + (1 << (32 - y)));
 					}
 				}
@@ -428,7 +426,6 @@ namespace StbVorbisSharp
 		{
 			if ((c->sparse) != 0)
 			{
-				(void)((!!(len != 255)) || (_wassert("len != NO_CODE", "stb_vorbis.c", (uint)(1130)), 0));
 				return (int)(1);
 			}
 
@@ -451,7 +448,6 @@ namespace StbVorbisSharp
 					if ((include_in_sort(c, (byte)(lengths[i]))) != 0)
 						c->sorted_codewords[k++] = (uint)(bit_reverse((uint)(c->codewords[i])));
 				}
-				(void)((!!((k) == (c->sorted_entries))) || (_wassert("k == c->sorted_entries", "stb_vorbis.c", (uint)(1150)), 0));
 			}
 			else
 			{
@@ -461,7 +457,7 @@ namespace StbVorbisSharp
 				}
 			}
 
-			CRuntime.qsort(c->sorted_codewords, (ulong)(c->sorted_entries), (ulong)(sizeof((c->sorted_codewords[0]))), uint32_compare);
+			CRuntime.qsort(c->sorted_codewords, (ulong)(c->sorted_entries), (ulong)(sizeof(uint)), uint32_compare);
 			c->sorted_codewords[c->sorted_entries] = (uint)(0xffffffff);
 			len = (int)((c->sparse) != 0 ? c->sorted_entries : c->entries);
 			for (i = (int)(0); (i) < (len); ++i)
@@ -485,7 +481,6 @@ namespace StbVorbisSharp
 							n >>= 1;
 						}
 					}
-					(void)((!!((c->sorted_codewords[x]) == (code))) || (_wassert("c->sorted_codewords[x] == code", "stb_vorbis.c", (uint)(1180)), 0));
 					if ((c->sparse) != 0)
 					{
 						c->sorted_values[x] = (int)(values[i]);
@@ -517,8 +512,6 @@ namespace StbVorbisSharp
 			int r = (int)(CRuntime.floor((double)(CRuntime.exp((double)((float)(CRuntime.log((double)((float)(entries)))) / dim)))));
 			if ((int)(CRuntime.floor((double)(CRuntime.pow((double)((float)(r) + 1), (double)(dim))))) <= entries)
 				++r;
-			(void)((!!((CRuntime.pow((double)((float)(r) + 1), (double)(dim))) > (entries))) || (_wassert("pow((float) r+1, dim) > entries", "stb_vorbis.c", (uint)(1205)), 0));
-			(void)((!!((int)(CRuntime.floor((double)(CRuntime.pow((double)((float)(r)), (double)(dim))))) <= entries)) || (_wassert("(int) CRuntime.floor(CRuntime.pow((float) r, dim)) <= entries", "stb_vorbis.c", (uint)(1206)), 0));
 			return (int)(r);
 		}
 
@@ -830,7 +823,6 @@ namespace StbVorbisSharp
 
 			if ((f.next_seg) >= (f.segment_count))
 				f.next_seg = (int)(-1);
-			(void)((!!((f.bytes_in_seg) == (0))) || (_wassert("f->bytes_in_seg == 0", "stb_vorbis.c", (uint)(1512)), 0));
 			f.bytes_in_seg = (byte)(len);
 			return (int)(len);
 		}
@@ -845,7 +837,6 @@ namespace StbVorbisSharp
 					return (int)(-1);
 			}
 
-			(void)((!!((f.bytes_in_seg) > (0))) || (_wassert("f->bytes_in_seg > 0", "stb_vorbis.c", (uint)(1526)), 0));
 			--f.bytes_in_seg;
 			++f.packet_bytes;
 			return (int)(get8(f));
@@ -925,7 +916,6 @@ namespace StbVorbisSharp
 				return (int)(-1);
 			}
 
-			(void)((!!(!c->sparse)) || (_wassert("!c->sparse", "stb_vorbis.c", (uint)(1642)), 0));
 			for (i = (int)(0); (i) < (c->entries); ++i)
 			{
 				if ((c->codeword_lengths[i]) == (255))
@@ -977,8 +967,6 @@ namespace StbVorbisSharp
 			else
 			{
 				z = (int)(codebook_decode_scalar(f, c));
-				if ((c->sparse) != 0)
-					(void)((!!((z) < (c->sorted_entries))) || (_wassert("z < c->sorted_entries", "stb_vorbis.c", (uint)(1730)), 0));
 				if ((z) < (0))
 				{
 					if (f.bytes_in_seg == 0)
@@ -1055,7 +1043,6 @@ namespace StbVorbisSharp
 			{
 				float last = (float)(0);
 				z = (int)(codebook_decode_scalar(f, c));
-				(void)((!!((c->sparse == 0) || ((z) < (c->sorted_entries)))) || (_wassert("!c->sparse || z < c->sorted_entries", "stb_vorbis.c", (uint)(1824)), 0));
 				if ((z) < (0))
 				{
 					if (f.bytes_in_seg == 0)
@@ -1075,7 +1062,7 @@ namespace StbVorbisSharp
 						{
 							float val = (float)((c->multiplicands[z + i]) + last);
 							if ((outputs[c_inter]) != null)
-								outputs[c_inter, p_inter] += (float)(val);
+								outputs[c_inter][p_inter] += (float)(val);
 							if ((++c_inter) == (ch))
 							{
 								c_inter = (int)(0);
@@ -1090,7 +1077,7 @@ namespace StbVorbisSharp
 						{
 							float val = (float)((c->multiplicands[z + i]) + last);
 							if ((outputs[c_inter]) != null)
-								outputs[c_inter, p_inter] += (float)(val);
+								outputs[c_inter][p_inter] += (float)(val);
 							if ((++c_inter) == (ch))
 							{
 								c_inter = (int)(0);
@@ -1185,16 +1172,15 @@ namespace StbVorbisSharp
 			int pass = 0;
 			Residue r = f.residue_config[rn];
 			int rtype = (int)(f.residue_types[rn]);
-			int c = (int)(r.classbook);
-			int classwords = (int)(f.codebooks[c].dimensions);
+			int c2 = (int)(r.classbook);
+			int classwords = (int)(f.codebooks[c2].dimensions);
 			uint actual_size = (uint)((rtype) == (2) ? n * 2 : n);
 			uint limit_r_begin = (uint)((r.begin) < (actual_size) ? r.begin : actual_size);
 			uint limit_r_end = (uint)((r.end) < (actual_size) ? r.end : actual_size);
 			int n_read = (int)(limit_r_end - limit_r_begin);
 			int part_read = (int)(n_read / r.part_size);
 			int temp_alloc_point = (int)((f).temp_offset);
-			byte*** part_classdata = (byte***)(make_block_array((f.alloc.alloc_buffer != null ? setup_temp_malloc(f, (int)(f.channels * (sizeof(void*) + (part_read * sizeof(byte*))))) : _alloca((ulong)(f.channels * (sizeof(void*) + (part_read * sizeof(byte*)))))), (int)(f.channels), (int)(part_read * sizeof(byte*))));
-			((void)(0));
+			byte*** part_classdata = (byte***)(make_block_array((f.alloc.alloc_buffer != null ? setup_temp_malloc(f, (int)(f.channels * (sizeof(void*) + (part_read * sizeof(byte*))))) : CRuntime.malloc((ulong)(f.channels * (sizeof(void*) + (part_read * sizeof(byte*)))))), (int)(f.channels), (int)(part_read * sizeof(byte*))));
 			for (i = (int)(0); (i) < (ch); ++i)
 			{
 				if (do_not_decode[i] == 0)
@@ -1229,12 +1215,12 @@ namespace StbVorbisSharp
 									q = (int)(c->sorted_values[q]);
 								if ((q) == (-1))
 									goto done;
-								part_classdata[0, class_set] = r.classdata[q];
+								part_classdata[0][class_set] = r.classdata[q];
 							}
 							for (i = (int)(0); ((i) < (classwords)) && ((pcount) < (part_read)); ++i, ++pcount)
 							{
-								int z = (int)(r.begin + pcount * r.part_size);
-								int c = (int)(part_classdata[0, class_set, i]);
+								int z2 = (int)(r.begin + pcount * r.part_size);
+								int c = (int)(part_classdata[0][class_set][i]);
 								int b = (int)(r.residue_books[c, pass]);
 								if ((b) >= (0))
 								{
@@ -1244,9 +1230,9 @@ namespace StbVorbisSharp
 								}
 								else
 								{
-									z += (int)(r.part_size);
-									c_inter = (int)(z & 1);
-									p_inter = (int)(z >> 1);
+									z2 += (int)(r.part_size);
+									c_inter = (int)(z2 & 1);
+									p_inter = (int)(z2 >> 1);
 								}
 							}
 							++class_set;
@@ -1268,12 +1254,12 @@ namespace StbVorbisSharp
 									q = (int)(c->sorted_values[q]);
 								if ((q) == (-1))
 									goto done;
-								part_classdata[0, class_set] = r.classdata[q];
+								part_classdata[0][class_set] = r.classdata[q];
 							}
 							for (i = (int)(0); ((i) < (classwords)) && ((pcount) < (part_read)); ++i, ++pcount)
 							{
-								int z = (int)(r.begin + pcount * r.part_size);
-								int c = (int)(part_classdata[0, class_set, i]);
+								int z2 = (int)(r.begin + pcount * r.part_size);
+								int c = (int)(part_classdata[0][class_set][i]);
 								int b = (int)(r.residue_books[c, pass]);
 								if ((b) >= (0))
 								{
@@ -1283,9 +1269,9 @@ namespace StbVorbisSharp
 								}
 								else
 								{
-									z += (int)(r.part_size);
+									z2 += (int)(r.part_size);
 									c_inter = (int)(0);
-									p_inter = (int)(z);
+									p_inter = (int)(z2);
 								}
 							}
 							++class_set;
@@ -1307,12 +1293,12 @@ namespace StbVorbisSharp
 									q = (int)(c->sorted_values[q]);
 								if ((q) == (-1))
 									goto done;
-								part_classdata[0, class_set] = r.classdata[q];
+								part_classdata[0][class_set] = r.classdata[q];
 							}
 							for (i = (int)(0); ((i) < (classwords)) && ((pcount) < (part_read)); ++i, ++pcount)
 							{
-								int z = (int)(r.begin + pcount * r.part_size);
-								int c = (int)(part_classdata[0, class_set, i]);
+								int z2 = (int)(r.begin + pcount * r.part_size);
+								int c = (int)(part_classdata[0][class_set][i]);
 								int b = (int)(r.residue_books[c, pass]);
 								if ((b) >= (0))
 								{
@@ -1322,9 +1308,9 @@ namespace StbVorbisSharp
 								}
 								else
 								{
-									z += (int)(r.part_size);
-									c_inter = (int)(z % ch);
-									p_inter = (int)(z / ch);
+									z2 += (int)(r.part_size);
+									c_inter = (int)(z2 % ch);
+									p_inter = (int)(z2 / ch);
 								}
 							}
 							++class_set;
@@ -1334,7 +1320,6 @@ namespace StbVorbisSharp
 				goto done;
 			}
 
-			((void)(0));
 			for (pass = (int)(0); (pass) < (8); ++pass)
 			{
 				int pcount = (int)(0);
@@ -1354,7 +1339,7 @@ namespace StbVorbisSharp
 									temp = (int)(c->sorted_values[temp]);
 								if ((temp) == (-1))
 									goto done;
-								part_classdata[j, class_set] = r.classdata[temp];
+								part_classdata[j][class_set] = r.classdata[temp];
 							}
 						}
 					}
@@ -1364,15 +1349,15 @@ namespace StbVorbisSharp
 						{
 							if (do_not_decode[j] == 0)
 							{
-								int c = (int)(part_classdata[j, class_set, i]);
+								int c = (int)(part_classdata[j][class_set][i]);
 								int b = (int)(r.residue_books[c, pass]);
 								if ((b) >= (0))
 								{
 									float* target = residue_buffers[j];
 									int offset = (int)(r.begin + pcount * r.part_size);
-									int n = (int)(r.part_size);
+									int n2 = (int)(r.part_size);
 									Codebook* book = f.codebooks + b;
-									if (residue_decode(f, book, target, (int)(offset), (int)(n), (int)(rtype)) == 0)
+									if (residue_decode(f, book, target, (int)(offset), (int)(n2), (int)(rtype)) == 0)
 										goto done;
 								}
 							}
@@ -1383,9 +1368,9 @@ namespace StbVorbisSharp
 			}
 		done:
 			;
-			((void)(0));
-			0;
-			((f).temp_offset = (int)(temp_alloc_point));
+
+			CRuntime.free(part_classdata);
+			(f).temp_offset = (int)(temp_alloc_point);
 		}
 
 		public static void imdct_step3_iter0_loop(int n, float* e, int i_off, int k_off, float* A)
@@ -1393,7 +1378,6 @@ namespace StbVorbisSharp
 			float* ee0 = e + i_off;
 			float* ee2 = ee0 + k_off;
 			int i = 0;
-			(void)((!!((n & 3) == (0))) || (_wassert("(n & 3) == 0", "stb_vorbis.c", (uint)(2400)), 0));
 			for (i = (int)(n >> 2); (i) > (0); --i)
 			{
 				float k00_20 = 0;
@@ -1595,7 +1579,7 @@ namespace StbVorbisSharp
 			int l = 0;
 			int ld = 0;
 			int save_point = (int)((f).temp_offset);
-			float* buf2 = (float*)(f.alloc.alloc_buffer != null ? setup_temp_malloc(f, (int)(n2 * sizeof(float))) : _alloca((ulong)(n2 * sizeof(float))));
+			float* buf2 = (float*)(f.alloc.alloc_buffer != null ? setup_temp_malloc(f, (int)(n2 * sizeof(float))) : CRuntime.malloc((ulong)(n2 * sizeof(float))));
 			float* u = null;
 			float* v = null;
 			float* A = f.A[blocktype];
@@ -1724,7 +1708,6 @@ namespace StbVorbisSharp
 				}
 			}
 
-			(void)((!!((v) == (buf2))) || (_wassert("v == buf2", "stb_vorbis.c", (uint)(2803)), 0));
 			{
 				float* C = f.C[blocktype];
 				float* d;
@@ -1815,8 +1798,8 @@ namespace StbVorbisSharp
 				}
 			}
 
-			0;
-			((f).temp_offset = (int)(save_point));
+			CRuntime.free(buf2);
+			(f).temp_offset = (int)(save_point);
 		}
 
 		public static float* get_window(stb_vorbis f, int len)
@@ -1826,7 +1809,6 @@ namespace StbVorbisSharp
 				return f.window[0];
 			if ((len) == (f.blocksize_1))
 				return f.window[1];
-			(void)((!!(0)) || (_wassert("0", "stb_vorbis.c", (uint)(3051)), 0));
 			return null;
 		}
 
@@ -1856,8 +1838,8 @@ namespace StbVorbisSharp
 						int hx = (int)(g->Xlist[j]);
 						if (lx != hx)
 							draw_line(target, (int)(lx), (int)(ly), (int)(hx), (int)(hy), (int)(n2));
-						((void)(0));
-						lx = (int)(hx) , ly = (int)(hy);
+						lx = (int)(hx);
+						ly = (int)(hy);
 					}
 				}
 				if ((lx) < (n2))
@@ -1865,7 +1847,7 @@ namespace StbVorbisSharp
 					for (j = (int)(lx); (j) < (n2); ++j)
 					{
 						target[j] *= (float)(StbVorbis.inverse_db_table[ly]);
-					} ((void)(0));
+					}
 				}
 			}
 
@@ -1897,8 +1879,6 @@ namespace StbVorbisSharp
 				goto retry;
 			}
 
-			if ((f.alloc.alloc_buffer) != null)
-				(void)((!!((f.alloc.alloc_buffer_length_in_bytes) == (f.temp_offset))) || (_wassert("f->alloc.alloc_buffer_length_in_bytes == f->temp_offset", "stb_vorbis.c", (uint)(3130)), 0));
 			i = (int)(get_bits(f, (int)(ilog((int)(f.mode_count - 1)))));
 			if ((i) == (-1))
 				return (int)(0);
@@ -1944,7 +1924,7 @@ namespace StbVorbisSharp
 			return (int)(1);
 		}
 
-		public static int vorbis_decode_packet_rest(stb_vorbis f, int* len, Mode* m, int left_start, int left_end, int right_start, int right_end, int* p_left)
+		public static int vorbis_decode_packet_rest(stb_vorbis f, int* len, Mode* mode, int left_start, int left_end, int right_start, int right_end, int* p_left)
 		{
 			Mapping* map;
 			int i = 0;
@@ -1954,10 +1934,9 @@ namespace StbVorbisSharp
 			int n2 = 0;
 			int* zero_channel = stackalloc int[256];
 			int* really_zero_channel = stackalloc int[256];
-			n = (int)(f.blocksize[m->blockflag]);
-			map = &f.mapping[m->mapping];
+			n = (int)(f.blocksize[mode->blockflag]);
+			map = &f.mapping[mode->mapping];
 			n2 = (int)(n >> 1);
-			((void)(0));
 			for (i = (int)(0); (i) < (f.channels); ++i)
 			{
 				int s = (int)(map->chan[i].mux);
@@ -2001,7 +1980,7 @@ namespace StbVorbisSharp
 							}
 							for (k = (int)(0); (k) < (cdim); ++k)
 							{
-								int book = (int)(g->subclass_books[pclass, cval & csub]);
+								int book = (int)(g->subclass_books[pclass * 8 + cval & csub]);
 								cval = (int)(cval >> cbits);
 								if ((book) >= (0))
 								{
@@ -2017,7 +1996,10 @@ namespace StbVorbisSharp
 							}
 						}
 						if ((f.valid_bits) == (-1))
+						{
+							zero_channel[i] = (int)(1);
 							goto error;
+						}
 						step2_flag[0] = (byte)(step2_flag[1] = (byte)(1));
 						for (j = (int)(2); (j) < (g->values); ++j)
 						{
@@ -2028,8 +2010,8 @@ namespace StbVorbisSharp
 							int lowroom = 0;
 							int room = 0;
 							int val = 0;
-							low = (int)(g->neighbors[j, 0]);
-							high = (int)(g->neighbors[j, 1]);
+							low = (int)(g->neighbors[j * 2 + 0]);
+							high = (int)(g->neighbors[j * 2 + 1]);
 							pred = (int)(predict_point((int)(g->Xlist[j]), (int)(g->Xlist[low]), (int)(g->Xlist[high]), (int)(finalY[low]), (int)(finalY[high])));
 							val = (int)(finalY[j]);
 							highroom = (int)(range - pred);
@@ -2066,15 +2048,12 @@ namespace StbVorbisSharp
 					}
 					else
 					{
-					error:
-						;
 						zero_channel[i] = (int)(1);
 					}
+				error:
+					;
 				}
 			}
-			((void)(0));
-			if ((f.alloc.alloc_buffer) != null)
-				(void)((!!((f.alloc.alloc_buffer_length_in_bytes) == (f.temp_offset))) || (_wassert("f->alloc.alloc_buffer_length_in_bytes == f->temp_offset", "stb_vorbis.c", (uint)(3279)), 0));
 			CRuntime.memcpy(really_zero_channel, zero_channel, (ulong)(sizeof(int) * f.channels));
 			for (i = (int)(0); (i) < (map->coupling_steps); ++i)
 			{
@@ -2083,7 +2062,6 @@ namespace StbVorbisSharp
 					zero_channel[map->chan[i].magnitude] = (int)(zero_channel[map->chan[i].angle] = (int)(0));
 				}
 			}
-			((void)(0));
 			for (i = (int)(0); (i) < (map->submaps); ++i)
 			{
 				float** residue_buffers = stackalloc float*[16];
@@ -2110,27 +2088,40 @@ namespace StbVorbisSharp
 				r = (int)(map->submap_residue[i]);
 				decode_residue(f, residue_buffers, (int)(ch), (int)(n2), (int)(r), do_not_decode);
 			}
-			if ((f.alloc.alloc_buffer) != null)
-				(void)((!!((f.alloc.alloc_buffer_length_in_bytes) == (f.temp_offset))) || (_wassert("f->alloc.alloc_buffer_length_in_bytes == f->temp_offset", "stb_vorbis.c", (uint)(3312)), 0));
-			((void)(0));
 			for (i = (int)(map->coupling_steps - 1); (i) >= (0); --i)
 			{
-				int n2 = (int)(n >> 1);
+				int n3 = (int)(n >> 1);
 				float* m = f.channel_buffers[map->chan[i].magnitude];
 				float* a = f.channel_buffers[map->chan[i].angle];
-				for (j = (int)(0); (j) < (n2); ++j)
+				for (j = (int)(0); (j) < (n3); ++j)
 				{
 					float a2 = 0;
 					float m2 = 0;
 					if ((m[j]) > (0))
 						if ((a[j]) > (0))
-							m2 = (float)(m[j]) , a2 = (float)(m[j] - a[j]); else a2 = (float)(m[j]) , m2 = (float)(m[j] + a[j]); else if ((a[j]) > (0))
-						m2 = (float)(m[j]) , a2 = (float)(m[j] + a[j]); else a2 = (float)(m[j]) , m2 = (float)(m[j] - a[j]);
+						{
+							m2 = (float)(m[j]);
+							a2 = (float)(m[j] - a[j]);
+						}
+						else
+						{
+							a2 = (float)(m[j]);
+							m2 = (float)(m[j] + a[j]);
+						}
+					else if ((a[j]) > (0))
+					{
+						m2 = (float)(m[j]);
+						a2 = (float)(m[j] + a[j]);
+					}
+					else
+					{
+						a2 = (float)(m[j]);
+						m2 = (float)(m[j] - a[j]);
+					}
 					m[j] = (float)(m2);
 					a[j] = (float)(a2);
 				}
 			}
-			((void)(0));
 			for (i = (int)(0); (i) < (f.channels); ++i)
 			{
 				if ((really_zero_channel[i]) != 0)
@@ -2142,12 +2133,10 @@ namespace StbVorbisSharp
 					do_floor(f, map, (int)(i), (int)(n), f.channel_buffers[i], f.finalY[i], null);
 				}
 			}
-			((void)(0));
 			for (i = (int)(0); (i) < (f.channels); ++i)
 			{
-				inverse_mdct(f.channel_buffers[i], (int)(n), f, (int)(m->blockflag));
+				inverse_mdct(f.channel_buffers[i], (int)(n), f, (int)(mode->blockflag));
 			}
-			((void)(0));
 			flush_packet(f);
 			if ((f.first_decode) != 0)
 			{
@@ -2203,10 +2192,7 @@ namespace StbVorbisSharp
 
 			if ((f.current_loc_valid) != 0)
 				f.current_loc += (uint)(right_start - left_start);
-			if ((f.alloc.alloc_buffer) != null)
-				(void)((!!((f.alloc.alloc_buffer_length_in_bytes) == (f.temp_offset))) || (_wassert("f->alloc.alloc_buffer_length_in_bytes == f->temp_offset", "stb_vorbis.c", (uint)(3428)), 0));
 			*len = (int)(right_end);
-			((void)(0));
 			return (int)(1);
 		}
 
@@ -2227,15 +2213,15 @@ namespace StbVorbisSharp
 			int j = 0;
 			if ((f.previous_length) != 0)
 			{
-				int i = 0;
-				int j = 0;
+				int i2 = 0;
+				int j2 = 0;
 				int n = (int)(f.previous_length);
 				float* w = get_window(f, (int)(n));
-				for (i = (int)(0); (i) < (f.channels); ++i)
+				for (i2 = (int)(0); (i2) < (f.channels); ++i2)
 				{
-					for (j = (int)(0); (j) < (n); ++j)
+					for (j2 = (int)(0); (j2) < (n); ++j2)
 					{
-						f.channel_buffers[i, left + j] = (float)(f.channel_buffers[i, left + j] * w[j] + f.previous_window[i, j] * w[n - 1 - j]);
+						f.channel_buffers[i2][left + j2] = (float)(f.channel_buffers[i2][left + j2] * w[j2] + f.previous_window[i2][j2] * w[n - 1 - j2]);
 					}
 				}
 			}
@@ -2246,7 +2232,7 @@ namespace StbVorbisSharp
 			{
 				for (j = (int)(0); (right + j) < (len); ++j)
 				{
-					f.previous_window[i, j] = (float)(f.channel_buffers[i, right + j]);
+					f.previous_window[i][j] = (float)(f.channel_buffers[i][right + j]);
 				}
 			}
 			if (prev == 0)
@@ -2421,7 +2407,7 @@ namespace StbVorbisSharp
 			{
 				if (is_whole_packet_present(f, (int)(1)) == 0)
 				{
-					if ((f.error) == (STBVorbisError.VORBIS_invalid_stream))
+					if ((f.error) == (int)(STBVorbisError.VORBIS_invalid_stream))
 						f.error = (int)(STBVorbisError.VORBIS_invalid_setup);
 					return (int)(0);
 				}
@@ -2449,7 +2435,6 @@ namespace StbVorbisSharp
 				int total = (int)(0);
 				byte* lengths;
 				Codebook* c = f.codebooks + i;
-				((void)(0));
 				x = (byte)(get_bits(f, (int)(8)));
 				if (x != 0x42)
 					return (int)(error(f, (int)(STBVorbisError.VORBIS_invalid_setup)));
@@ -2536,7 +2521,6 @@ namespace StbVorbisSharp
 				}
 				c->sorted_entries = (int)(sorted_count);
 				values = null;
-				((void)(0));
 				if (c->sparse == 0)
 				{
 					c->codewords = (uint*)(setup_malloc(f, (int)(sizeof(uint) * c->entries)));
@@ -2588,7 +2572,6 @@ namespace StbVorbisSharp
 					c->codewords = null;
 				}
 				compute_accelerated_huffman(c);
-				((void)(0));
 				c->lookup_type = (byte)(get_bits(f, (int)(4)));
 				if ((c->lookup_type) > (2))
 					return (int)(error(f, (int)(STBVorbisError.VORBIS_invalid_setup)));
@@ -2624,7 +2607,7 @@ namespace StbVorbisSharp
 					}
 					if ((c->lookup_type) == (1))
 					{
-						int len = 0;
+						int len2 = 0;
 						int sparse = (int)(c->sparse);
 						float last = (float)(0);
 						if ((sparse) != 0)
@@ -2640,8 +2623,8 @@ namespace StbVorbisSharp
 							setup_temp_free(f, mults, (int)(sizeof(ushort) * c->lookup_values));
 							return (int)(error(f, (int)(STBVorbisError.VORBIS_outofmem)));
 						}
-						len = (int)((sparse) != 0 ? c->sorted_entries : c->entries);
-						for (j = (int)(0); (j) < (len); ++j)
+						len2 = (int)((sparse) != 0 ? c->sorted_entries : c->entries);
+						for (j = (int)(0); (j) < (len2); ++j)
 						{
 							uint z = (uint)((sparse) != 0 ? c->sorted_values[j] : j);
 							uint div = (uint)(1);
@@ -2669,7 +2652,6 @@ namespace StbVorbisSharp
 					else
 					{
 						float last = (float)(0);
-						((void)(0));
 						c->multiplicands = (float*)(setup_malloc(f, (int)(sizeof(float) * c->lookup_values)));
 						if ((c->multiplicands) == null)
 						{
@@ -2687,9 +2669,7 @@ namespace StbVorbisSharp
 				skip:
 					;
 					setup_temp_free(f, mults, (int)(sizeof(ushort) * c->lookup_values));
-					((void)(0));
 				}
-((void)(0));
 			}
 			x = (byte)(get_bits(f, (int)(6)) + 1);
 			for (i = (int)(0); (i) < (x); ++i)
@@ -2746,8 +2726,8 @@ namespace StbVorbisSharp
 						}
 						for (k = (int)(0); (k) < (1 << g->class_subclasses[j]); ++k)
 						{
-							g->subclass_books[j, k] = (short)(get_bits(f, (int)(8)) - 1);
-							if ((g->subclass_books[j, k]) >= (f.codebook_count))
+							g->subclass_books[j * 8 + k] = (short)(get_bits(f, (int)(8)) - 1);
+							if ((g->subclass_books[j * 8 + k]) >= (f.codebook_count))
 								return (int)(error(f, (int)(STBVorbisError.VORBIS_invalid_setup)));
 						}
 					}
@@ -2770,7 +2750,7 @@ namespace StbVorbisSharp
 						p[j].x = (ushort)(g->Xlist[j]);
 						p[j].id = (ushort)(j);
 					}
-					CRuntime.qsort(p, (ulong)(g->values), (ulong)(sizeof((p[0]))), point_compare);
+					CRuntime.qsort(p, (ulong)(g->values), (ulong)(sizeof(stbv__floor_ordering)), point_compare);
 					for (j = (int)(0); (j) < (g->values); ++j)
 					{
 						g->sorted_order[j] = ((byte)(p[j].id));
@@ -2780,8 +2760,8 @@ namespace StbVorbisSharp
 						int low = 0;
 						int hi = 0;
 						neighbors(g->Xlist, (int)(j), &low, &hi);
-						g->neighbors[j, 0] = (byte)(low);
-						g->neighbors[j, 1] = (byte)(hi);
+						g->neighbors[j * 2 + 0] = (byte)(low);
+						g->neighbors[j * 2 + 1] = (byte)(hi);
 					}
 					if ((g->values) > (longest_floorlist))
 						longest_floorlist = (int)(g->values);
@@ -2791,7 +2771,6 @@ namespace StbVorbisSharp
 			f.residue_config = new Residue[f.residue_count];
 			if ((f.residue_config) == null)
 				return (int)(error(f, (int)(STBVorbisError.VORBIS_outofmem)));
-			CRuntime.memset(f.residue_config, (int)(0), (ulong)(f.residue_count * sizeof((f.residue_config[0]))));
 			for (i = (int)(0); (i) < (f.residue_count); ++i)
 			{
 				byte* residue_cascade = stackalloc byte[64];
@@ -2816,7 +2795,7 @@ namespace StbVorbisSharp
 						high_bits = (byte)(get_bits(f, (int)(5)));
 					residue_cascade[j] = (byte)(high_bits * 8 + low_bits);
 				}
-				r.residue_books = (short[] *)(setup_malloc(f, (int)(sizeof(short) * r.classifications)));
+				r.residue_books = new short[r.classifications, 8];
 				if ((r.residue_books) == null)
 					return (int)(error(f, (int)(STBVorbisError.VORBIS_outofmem)));
 				for (j = (int)(0); (j) < (r.classifications); ++j)
@@ -2843,12 +2822,12 @@ namespace StbVorbisSharp
 				{
 					int classwords = (int)(f.codebooks[r.classbook].dimensions);
 					int temp = (int)(j);
-					r.classdata[j] = (byte*)(setup_malloc(f, (int)(sizeof((r.classdata[j, 0])) * classwords)));
+					r.classdata[j] = (byte*)(setup_malloc(f, (int)(sizeof(byte) * classwords)));
 					if ((r.classdata[j]) == null)
 						return (int)(error(f, (int)(STBVorbisError.VORBIS_outofmem)));
 					for (k = (int)(classwords - 1); (k) >= (0); --k)
 					{
-						r.classdata[j, k] = (byte)(temp % r.classifications);
+						r.classdata[j][k] = (byte)(temp % r.classifications);
 						temp /= (int)(r.classifications);
 					}
 				}
@@ -2952,11 +2931,11 @@ namespace StbVorbisSharp
 			{
 				uint imdct_mem = (uint)(f.blocksize_1 * sizeof(float) >> 1);
 				uint classify_mem = 0;
-				int i = 0;
+				int i2 = 0;
 				int max_part_read = (int)(0);
-				for (i = (int)(0); (i) < (f.residue_count); ++i)
+				for (i2 = (int)(0); (i2) < (f.residue_count); ++i2)
 				{
-					Residue r = f.residue_config[i];
+					Residue r = f.residue_config[i2];
 					uint actual_size = (uint)(f.blocksize_1 / 2);
 					uint limit_r_begin = (uint)((r.begin) < (actual_size) ? r.begin : actual_size);
 					uint limit_r_end = (uint)((r.end) < (actual_size) ? r.end : actual_size);
@@ -2972,13 +2951,6 @@ namespace StbVorbisSharp
 			}
 
 			f.first_decode = (byte)(1);
-			if ((f.alloc.alloc_buffer) != null)
-			{
-				(void)((!!((f.temp_offset) == (f.alloc.alloc_buffer_length_in_bytes))) || (_wassert("f->temp_offset == f->alloc.alloc_buffer_length_in_bytes", "stb_vorbis.c", (uint)(4128)), 0));
-				if ((f.setup_offset + sizeof((f)) + f.temp_memory_required) > ((uint)(f.temp_offset)))
-					return (int)(error(f, (int)(STBVorbisError.VORBIS_outofmem)));
-			}
-
 			f.first_audio_page_offset = (uint)(stb_vorbis_get_file_offset(f));
 			return (int)(1);
 		}
@@ -3000,13 +2972,11 @@ namespace StbVorbisSharp
 						}
 						setup_free(p, r.classdata);
 					}
-					setup_free(p, r.residue_books);
 				}
 			}
 
 			if ((p.codebooks) != null)
 			{
-				((void)(0));
 				for (i = (int)(0); (i) < (p.codebook_count); ++i)
 				{
 					Codebook* c = p.codebooks + i;
@@ -3014,13 +2984,15 @@ namespace StbVorbisSharp
 					setup_free(p, c->multiplicands);
 					setup_free(p, c->codewords);
 					setup_free(p, c->sorted_codewords);
-					setup_free(p, c->sorted_values ? c->sorted_values - 1 : null);
+					if (c->sorted_values != null)
+					{
+						setup_free(p, c->sorted_values - 1);
+					}
 				}
 				setup_free(p, p.codebooks);
 			}
 
 			setup_free(p, p.floor_config);
-			setup_free(p, p.residue_config);
 			if ((p.mapping) != null)
 			{
 				for (i = (int)(0); (i) < (p.mapping_count); ++i)
@@ -3030,7 +3002,6 @@ namespace StbVorbisSharp
 				setup_free(p, p.mapping);
 			}
 
-			((void)(0));
 			for (i = (int)(0); ((i) < (p.channels)) && ((i) < (16)); ++i)
 			{
 				setup_free(p, p.channel_buffers[i]);
@@ -3052,12 +3023,10 @@ namespace StbVorbisSharp
 			if ((p) == null)
 				return;
 			vorbis_deinit(p);
-			setup_free(p, p);
 		}
 
 		public static void vorbis_init(stb_vorbis p, stb_vorbis_alloc* z)
 		{
-			CRuntime.memset(p, (int)(0), (ulong)(sizeof((p))));
 			if ((z) != null)
 			{
 				p.alloc = (stb_vorbis_alloc)(*z);
@@ -3178,14 +3147,14 @@ namespace StbVorbisSharp
 			{
 				uint crc = 0;
 				int j = 0;
-				int n = (int)(f.scan[i].bytes_done);
+				int n2 = (int)(f.scan[i].bytes_done);
 				int m = (int)(f.scan[i].bytes_left);
-				if ((m) > (data_len - n))
-					m = (int)(data_len - n);
+				if ((m) > (data_len - n2))
+					m = (int)(data_len - n2);
 				crc = (uint)(f.scan[i].crc_so_far);
 				for (j = (int)(0); (j) < (m); ++j)
 				{
-					crc = (uint)(crc32_update((uint)(crc), (byte)(data[n + j])));
+					crc = (uint)(crc32_update((uint)(crc), (byte)(data[n2 + j])));
 				}
 				f.scan[i].bytes_left -= (int)(m);
 				f.scan[i].crc_so_far = (uint)(crc);
@@ -3193,7 +3162,7 @@ namespace StbVorbisSharp
 				{
 					if ((f.scan[i].crc_so_far) == (f.scan[i].goal_crc))
 					{
-						data_len = (int)(n + m);
+						data_len = (int)(n2 + m);
 						f.page_crc_tests = (int)(-1);
 						f.previous_length = (int)(0);
 						f.next_seg = (int)(-1);
@@ -3237,7 +3206,7 @@ namespace StbVorbisSharp
 			if (vorbis_decode_packet(f, &len, &left, &right) == 0)
 			{
 				int error = (int)(f.error);
-				if ((error) == (STBVorbisError.VORBIS_bad_packet_type))
+				if ((error) == (int)(STBVorbisError.VORBIS_bad_packet_type))
 				{
 					f.error = (int)(STBVorbisError.VORBIS__no_error);
 					while (get8_packet(f) != (-1))
@@ -3248,7 +3217,7 @@ namespace StbVorbisSharp
 					*samples = (int)(0);
 					return (int)(f.stream - data);
 				}
-				if ((error) == (STBVorbisError.VORBIS_continued_packet_flag_invalid))
+				if ((error) == (int)(STBVorbisError.VORBIS_continued_packet_flag_invalid))
 				{
 					if ((f.previous_length) == (0))
 					{
@@ -3345,34 +3314,34 @@ namespace StbVorbisSharp
 					if ((i) == (4))
 					{
 						byte* header = stackalloc byte[27];
-						uint i = 0;
+						uint i2 = 0;
 						uint crc = 0;
 						uint goal = 0;
 						uint len = 0;
-						for (i = (uint)(0); (i) < (4); ++i)
+						for (i2 = (uint)(0); (i2) < (4); ++i2)
 						{
-							header[i] = (byte)(StbVorbis.ogg_page_header[i]);
+							header[i2] = (byte)(StbVorbis.ogg_page_header[i2]);
 						}
-						for (; (i) < (27); ++i)
+						for (; (i2) < (27); ++i2)
 						{
-							header[i] = (byte)(get8(f));
+							header[i2] = (byte)(get8(f));
 						}
 						if ((f.eof) != 0)
 							return (uint)(0);
 						if (header[4] != 0)
 							goto invalid;
 						goal = (uint)(header[22] + (header[23] << 8) + (header[24] << 16) + (header[25] << 24));
-						for (i = (uint)(22); (i) < (26); ++i)
+						for (i2 = (uint)(22); (i2) < (26); ++i2)
 						{
-							header[i] = (byte)(0);
+							header[i2] = (byte)(0);
 						}
 						crc = (uint)(0);
-						for (i = (uint)(0); (i) < (27); ++i)
+						for (i2 = (uint)(0); (i2) < (27); ++i2)
 						{
-							crc = (uint)(crc32_update((uint)(crc), (byte)(header[i])));
+							crc = (uint)(crc32_update((uint)(crc), (byte)(header[i2])));
 						}
 						len = (uint)(0);
-						for (i = (uint)(0); (i) < (header[26]); ++i)
+						for (i2 = (uint)(0); (i2) < (header[26]); ++i2)
 						{
 							int s = (int)(get8(f));
 							crc = (uint)(crc32_update((uint)(crc), (byte)(s)));
@@ -3380,7 +3349,7 @@ namespace StbVorbisSharp
 						}
 						if (((len) != 0) && ((f.eof) != 0))
 							return (uint)(0);
-						for (i = (uint)(0); (i) < (len); ++i)
+						for (i2 = (uint)(0); (i2) < (len); ++i2)
 						{
 							crc = (uint)(crc32_update((uint)(crc), (byte)(get8(f))));
 						}
@@ -3479,7 +3448,6 @@ namespace StbVorbisSharp
 					goto error;
 			}
 			right = (ProbedPage)(f.p_last);
-			(void)((!!(right.last_decoded_sample != ~0U)) || (_wassert("right.last_decoded_sample != ~0U", "stb_vorbis.c", (uint)(4644)), 0));
 			if (sample_number <= left.last_decoded_sample)
 			{
 				if ((stb_vorbis_seek_start(f)) != 0)
@@ -3489,7 +3457,6 @@ namespace StbVorbisSharp
 
 			while (left.page_end != right.page_start)
 			{
-				(void)((!!((left.page_end) < (right.page_start))) || (_wassert("left.page_end < right.page_start", "stb_vorbis.c", (uint)(4654)), 0));
 				delta = (uint)(right.page_start - left.page_end);
 				if (delta <= 65536)
 				{
@@ -3534,7 +3501,6 @@ namespace StbVorbisSharp
 					if (mid.last_decoded_sample != ~0U)
 						break;
 					set_file_offset(f, (uint)(mid.page_end));
-					(void)((!!((mid.page_start) < (right.page_start))) || (_wassert("mid.page_start < right.page_start", "stb_vorbis.c", (uint)(4696)), 0));
 				}
 				if ((mid.page_start) == (right.page_start))
 					break;
@@ -3549,7 +3515,6 @@ namespace StbVorbisSharp
 			if (start_page(f) == 0)
 				return (int)(error(f, (int)(STBVorbisError.VORBIS_seek_failed)));
 			end_pos = (int)(f.end_seg_with_known_loc);
-			(void)((!!((end_pos) >= (0))) || (_wassert("end_pos >= 0", "stb_vorbis.c", (uint)(4717)), 0));
 			for (; ; )
 			{
 				for (i = (int)(end_pos); (i) > (0); --i)
@@ -3617,8 +3582,6 @@ namespace StbVorbisSharp
 				return (int)(error(f, (int)(STBVorbisError.VORBIS_invalid_api_mixing)));
 			if (seek_to_sample_coarse(f, (uint)(sample_number)) == 0)
 				return (int)(0);
-			(void)((!!(f.current_loc_valid)) || (_wassert("f->current_loc_valid", "stb_vorbis.c", (uint)(4799)), 0));
-			(void)((!!(f.current_loc <= sample_number)) || (_wassert("f->current_loc <= sample_number", "stb_vorbis.c", (uint)(4800)), 0));
 			max_frame_samples = (uint)((f.blocksize_1 * 3 - f.blocksize_0) >> 2);
 			while ((f.current_loc) < (sample_number))
 			{
@@ -3647,7 +3610,6 @@ namespace StbVorbisSharp
 					flush_packet(f);
 				}
 			}
-			(void)((!!((f.current_loc) == (sample_number))) || (_wassert("f->current_loc == sample_number", "stb_vorbis.c", (uint)(4824)), 0));
 			return (int)(1);
 		}
 
@@ -3659,9 +3621,8 @@ namespace StbVorbisSharp
 			{
 				int n = 0;
 				uint frame_start = (uint)(f.current_loc);
-				stb_vorbis_get_frame_float(f, &n, null);
-				(void)((!!((sample_number) > (frame_start))) || (_wassert("sample_number > frame_start", "stb_vorbis.c", (uint)(4837)), 0));
-				(void)((!!(f.channel_buffer_start + (int)(sample_number - frame_start) <= f.channel_buffer_end)) || (_wassert("f->channel_buffer_start + (int) (sample_number-frame_start) <= f->channel_buffer_end", "stb_vorbis.c", (uint)(4838)), 0));
+				float*[] output = null;
+				stb_vorbis_get_frame_float(f, &n, ref output);
 				f.channel_buffer_start += (int)(sample_number - frame_start);
 			}
 
@@ -3837,7 +3798,7 @@ namespace StbVorbisSharp
 					{
 						for (i = (int)(0); (i) < (n); ++i)
 						{
-							buffer[i] += (float)(data[j, d_offset + o + i]);
+							buffer[i] += (float)(data[j][d_offset + o + i]);
 						}
 					}
 				}
@@ -3871,22 +3832,22 @@ namespace StbVorbisSharp
 					{
 						for (i = (int)(0); (i) < (n); ++i)
 						{
-							buffer[i * 2 + 0] += (float)(data[j, d_offset + o + i]);
-							buffer[i * 2 + 1] += (float)(data[j, d_offset + o + i]);
+							buffer[i * 2 + 0] += (float)(data[j][d_offset + o + i]);
+							buffer[i * 2 + 1] += (float)(data[j][d_offset + o + i]);
 						}
 					}
 					else if ((m) == (2))
 					{
 						for (i = (int)(0); (i) < (n); ++i)
 						{
-							buffer[i * 2 + 0] += (float)(data[j, d_offset + o + i]);
+							buffer[i * 2 + 0] += (float)(data[j][d_offset + o + i]);
 						}
 					}
 					else if ((m) == (4))
 					{
 						for (i = (int)(0); (i) < (n); ++i)
 						{
-							buffer[i * 2 + 1] += (float)(data[j, d_offset + o + i]);
+							buffer[i * 2 + 1] += (float)(data[j][d_offset + o + i]);
 						}
 					}
 				}
@@ -3905,16 +3866,9 @@ namespace StbVorbisSharp
 			int i = 0;
 			if (((buf_c != data_c) && (buf_c <= 2)) && (data_c <= 6))
 			{
-				int** channel_selector = stackalloc int[3];
-				channel_selector[0] = {
-					0 };
-				channel_selector[1] = {
-					1 };
-				channel_selector[2] = {
-					2, 4 };
 				for (i = (int)(0); (i) < (buf_c); ++i)
 				{
-					compute_samples((int)(channel_selector[buf_c, i]), buffer[i] + b_offset, (int)(data_c), data, (int)(d_offset), (int)(samples));
+					compute_samples((int)(StbVorbis.channel_selector[buf_c, i]), buffer[i] + b_offset, (int)(data_c), data, (int)(d_offset), (int)(samples));
 				}
 			}
 			else
@@ -3948,7 +3902,6 @@ namespace StbVorbisSharp
 			int i = 0;
 			if (((buf_c != data_c) && (buf_c <= 2)) && (data_c <= 6))
 			{
-				(void)((!!((buf_c) == (2))) || (_wassert("buf_c == 2", "stb_vorbis.c", (uint)(5179)), 0));
 				for (i = (int)(0); (i) < (buf_c); ++i)
 				{
 					compute_stereo_samples(buffer, (int)(data_c), data, (int)(d_offset), (int)(len));
@@ -3962,7 +3915,7 @@ namespace StbVorbisSharp
 				{
 					for (i = (int)(0); (i) < (limit); ++i)
 					{
-						float f = (float)(data[i, d_offset + j]);
+						float f = (float)(data[i][d_offset + j]);
 						int v = ((int)((f) * (1 << (15))));
 						if (((uint)(v + 32768)) > (65535))
 							v = (int)((v) < (0) ? -32768 : 32767);
@@ -4044,7 +3997,7 @@ namespace StbVorbisSharp
 			return (int)(n);
 		}
 
-		public static int stb_vorbis_decode_memory(byte* mem, int len, int* channels, int* sample_rate, short** output)
+		public static int stb_vorbis_decode_memory(byte* mem, int len, int* channels, int* sample_rate, ref short* output)
 		{
 			int data_len = 0;
 			int offset = 0;
@@ -4089,7 +4042,7 @@ namespace StbVorbisSharp
 					data = data2;
 				}
 			}
-			*output = data;
+			output = data;
 			stb_vorbis_close(v);
 			return (int)(data_len);
 		}
@@ -4113,7 +4066,7 @@ namespace StbVorbisSharp
 				{
 					for (i = (int)(0); (i) < (z); ++i)
 					{
-						*buffer++ = (float)(f.channel_buffers[i, f.channel_buffer_start + j]);
+						*buffer++ = (float)(f.channel_buffers[i][f.channel_buffer_start + j]);
 					}
 					for (; (i) < (channels); ++i)
 					{

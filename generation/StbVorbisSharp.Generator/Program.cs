@@ -61,7 +61,8 @@ namespace StbSharp.StbImage.Generator
 			data = data.Replace("((void *)(0))", "null");
 			data = data.Replace("(void *)(0)", "null");
 
-			data = data.Replace("][", ", ");
+			data = data.Replace("!= STBVorbisError.", "!= (int)STBVorbisError.");
+			data = data.Replace("== (STBVorbisError.", "== (int)(STBVorbisError.");
 
 			data = data.Replace("byte* minp;", "byte* minp = null;");
 			data = data.Replace("byte* maxp;", "byte* maxp = null;");
@@ -106,6 +107,8 @@ namespace StbSharp.StbImage.Generator
 				"sizeof(uint)");
 			data = data.Replace("sizeof((*values))",
 				"sizeof(uint)");
+			data = data.Replace("sizeof((c->sorted_codewords[0]))",
+				"sizeof(uint)");
 			data = data.Replace("sizeof((*c->sorted_codewords))",
 				"sizeof(uint)");
 			data = data.Replace("sizeof((*c->sorted_values))",
@@ -118,18 +121,17 @@ namespace StbSharp.StbImage.Generator
 				"sizeof(Floor)");
 			data = data.Replace("(Residue)(setup_malloc(f, (int)(f.residue_count * sizeof((f.residue_config[0])))))",
 				"new Residue[f.residue_count]");
+data = data.Replace("residue_books[j][k]", "residue_books[j, k]");
 			data = data.Replace("sizeof((*r.classdata))",
 				"sizeof(byte *)");
 			data = data.Replace("sizeof((*f.mapping))",
 				"sizeof(Mapping)");
-			data = data.Replace("sizeof((r.classdata[j][0]))",
-				"sizeof(byte)");
-			data = data.Replace("sizeof((r.residue_books[0]))",
-				"sizeof(short)");
-			data = data.Replace("sizeof((*m->chan))",
-				"sizeof(MappingChannel)");
-			data = data.Replace("(short [8]*)(setup_malloc(f, (int)(sizeof(short) * r.classifications)))",
-				"new short*[r.classifications]");
+			data = data.Replace("sizeof((r.classdata[j][0]))", "sizeof(byte)");
+			data = data.Replace("sizeof((r.residue_books[0]))", "sizeof(short)");
+			data = data.Replace("sizeof((*m->chan))", "sizeof(MappingChannel)");
+			data = data.Replace("sizeof((p[0]))", "sizeof(stbv__floor_ordering)");
+			data = data.Replace("(short[]*)(setup_malloc(f, (int)(sizeof(short) * r.classifications)))",
+				"new short[r.classifications, 8]");
 			data = data.Replace("sizeof(float)* *",
 				"sizeof(float) *");
 			data = data.Replace("sizeof(short)* *",
@@ -146,6 +148,7 @@ namespace StbSharp.StbImage.Generator
 				"new stb_vorbis()");
 			data = data.Replace("memset(buffer, (int)(0), (ulong)(sizeof((buffer))))",
 				"memset(buffer, (int)(0), (ulong)(sizeof(float) * 32))");
+			data = data.Replace("int[][]", "int[,]");
 			data = data.Replace("channel_position[num_c][j]",
 				"channel_position[num_c,j]");
 			data = data.Replace("channel_selector[buf_c][i]",
@@ -182,6 +185,11 @@ namespace StbSharp.StbImage.Generator
 				"");
 			data = data.Replace("if (((f.current_loc_valid) != 0) && (f.page_flag & 4))",
 				"if (((f.current_loc_valid) != 0) && (f.page_flag & 4) != 0)");
+			data = data.Replace("[c][pass]", "[c, pass]");
+			data = data.Replace("stb_vorbis_get_frame_float(f, &n, null);",
+				"float*[] output = null; stb_vorbis_get_frame_float(f, &n, ref output);");
+			data = data.Replace("short** output", "ref short* output");
+			data = data.Replace("*output = data;", "output = data;");
 
 			File.WriteAllText(@"..\..\..\..\..\src\StbVorbisSharp\StbVorbis.Generated.cs", data);
 		}
