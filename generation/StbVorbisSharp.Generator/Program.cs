@@ -120,8 +120,8 @@ namespace StbSharp.StbImage.Generator
 			data = data.Replace("sizeof((*f.floor_config))",
 				"sizeof(Floor)");
 			data = data.Replace("(Residue)(setup_malloc(f, (int)(f.residue_count * sizeof((f.residue_config[0])))))",
-				"new Residue[f.residue_count]");
-data = data.Replace("residue_books[j][k]", "residue_books[j, k]");
+				"new Residue[f.residue_count];for (i = 0; i < f.residue_config.Length; ++i) { f.residue_config[i] = new Residue(); }");
+			data = data.Replace("residue_books[j][k]", "residue_books[j, k]");
 			data = data.Replace("sizeof((*r.classdata))",
 				"sizeof(byte *)");
 			data = data.Replace("sizeof((*f.mapping))",
@@ -190,6 +190,7 @@ data = data.Replace("residue_books[j][k]", "residue_books[j, k]");
 				"float*[] output = null; stb_vorbis_get_frame_float(f, &n, ref output);");
 			data = data.Replace("short** output", "ref short* output");
 			data = data.Replace("*output = data;", "output = data;");
+			data = data.Replace("-1 / c->lookup_values", "uint.MaxValue / c->lookup_values");
 
 			File.WriteAllText(@"..\..\..\..\..\src\StbVorbisSharp\StbVorbis.Generated.cs", data);
 		}

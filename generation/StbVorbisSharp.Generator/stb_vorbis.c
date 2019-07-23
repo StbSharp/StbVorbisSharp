@@ -3211,7 +3211,7 @@ static int vorbis_decode_packet_rest(vorb *f, int *len, Mode *mode, int left_sta
                   DECODE(cval,f,c);
                }
                for (k=0; k < cdim; ++k) {
-                  int book = g->subclass_books[pclass * 8 + cval & csub];
+                  int book = g->subclass_books[pclass * 8 + (cval & csub)];
                   cval = cval >> cbits;
                   if (book >= 0) {
                      int temp;

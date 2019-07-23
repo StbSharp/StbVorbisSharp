@@ -1980,7 +1980,7 @@ namespace StbVorbisSharp
 							}
 							for (k = (int)(0); (k) < (cdim); ++k)
 							{
-								int book = (int)(g->subclass_books[pclass * 8 + cval & csub]);
+								int book = (int)(g->subclass_books[pclass * 8 + (cval & csub)]);
 								cval = (int)(cval >> cbits);
 								if ((book) >= (0))
 								{
@@ -2638,7 +2638,7 @@ namespace StbVorbisSharp
 									last = (float)(val);
 								if ((k + 1) < (c->dimensions))
 								{
-									if ((div) > (-1 / c->lookup_values))
+									if ((div) > (uint.MaxValue / c->lookup_values))
 									{
 										setup_temp_free(f, mults, (int)(sizeof(ushort) * c->lookup_values));
 										return (int)(error(f, (int)(STBVorbisError.VORBIS_invalid_setup)));
@@ -2769,6 +2769,10 @@ namespace StbVorbisSharp
 			}
 			f.residue_count = (int)(get_bits(f, (int)(6)) + 1);
 			f.residue_config = new Residue[f.residue_count];
+			for (i = 0; i < f.residue_config.Length; ++i)
+			{
+				f.residue_config[i] = new Residue();
+			};
 			if ((f.residue_config) == null)
 				return (int)(error(f, (int)(STBVorbisError.VORBIS_outofmem)));
 			for (i = (int)(0); (i) < (f.residue_count); ++i)
