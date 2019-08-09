@@ -4,5 +4,18 @@
 
 C# port of stb_vorbis.c
 
+# Adding Reference
+There are two ways of referencing StbVorbis in the project:
+1. Through nuget: `install-package StbVorbis`
+2. As submodule:
+    
+    a. `git submodule add https://github.com/StbSharp/StbVorbis.git`
+    
+    b. Now there are two options:
+       
+      * Add StbVorbis/src/StbVorbis/StbVorbis.csproj to the solution
+       
+      * Include *.cs from StbVorbis/src/StbVorbis directly in the project. In this case, it might make sense to add STBSHARP_INTERNAL build compilation symbol to the project, so StbVorbis classes would become internal.
+
 # Credits
 * [stb](https://github.com/nothings/stb)
