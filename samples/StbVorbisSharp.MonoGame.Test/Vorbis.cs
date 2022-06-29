@@ -5,7 +5,7 @@ namespace StbVorbisSharp
 {
 	public unsafe class Vorbis : IDisposable
 	{
-		private readonly stb_vorbis _vorbis;
+		private stb_vorbis _vorbis;
 		private readonly stb_vorbis_info _vorbisInfo;
 		private readonly byte[] _data;
 		private readonly float _lengthInSeconds;
@@ -80,7 +80,7 @@ namespace StbVorbisSharp
 			stb_vorbis vorbis;
 			fixed (byte* b = data)
 			{
-				vorbis = stb_vorbis_open_memory(b, data.Length, null, null);
+				vorbis = stb_vorbis_open_memory(b, data.Length, null);
 			}
 
 			_vorbis = vorbis;
@@ -92,8 +92,18 @@ namespace StbVorbisSharp
 			Restart();
 		}
 
+		~Vorbis()
+		{
+			Dispose();
+		}
+
 		public void Dispose()
 		{
+			if (_vorbis != null)
+			{
+				vorbis_deinit(_vorbis);
+				_vorbis = null;
+			}
 		}
 
 		public void Restart()

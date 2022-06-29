@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Hebron.Runtime;
+using System;
 using System.Runtime.InteropServices;
 
 namespace StbVorbisSharp
 {
 	public static unsafe partial class StbVorbis
 	{
+		public static int NativeAllocations => MemoryStats.Allocations;
+
 		public class Residue
 		{
 			public uint begin;
@@ -20,23 +23,22 @@ namespace StbVorbisSharp
 		{
 			public uint sample_rate;
 			public int channels;
-			public uint setup_memory_required;
-			public uint temp_memory_required;
-			public uint setup_temp_memory_required;
+			public sbyte* vendor;
+			public int comment_list_length;
+			public sbyte** comment_list;
 			public byte* stream;
 			public byte* stream_start;
 			public byte* stream_end;
 			public uint stream_len;
 			public byte push_mode;
 			public uint first_audio_page_offset;
-			public ProbedPage p_first = new ProbedPage();
-			public ProbedPage p_last = new ProbedPage();
-			public stb_vorbis_alloc alloc = new stb_vorbis_alloc();
+			public ProbedPage p_first;
+			public ProbedPage p_last;
 			public int setup_offset;
 			public int temp_offset;
 			public int eof;
 
-			public int error;
+			public STBVorbisError error;
 			public int[] blocksize = new int[2];
 			public int blocksize_0;
 			public int blocksize_1;
@@ -44,6 +46,7 @@ namespace StbVorbisSharp
 			public Codebook* codebooks;
 			public int floor_count;
 			public ushort[] floor_types = new ushort[64];
+
 			public Floor* floor_config;
 			public int residue_count;
 			public ushort[] residue_types = new ushort[64];
@@ -51,7 +54,7 @@ namespace StbVorbisSharp
 			public int mapping_count;
 			public Mapping* mapping;
 			public int mode_count;
-			public Mode* mode_config = (Mode*) CRuntime.malloc(64 * sizeof(Mode));
+			public Mode[] mode_config = new Mode[64];
 			public uint total_samples;
 			public float*[] channel_buffers = new float*[16];
 			public float*[] outputs = new float*[16];
@@ -68,7 +71,7 @@ namespace StbVorbisSharp
 			public uint serial;
 			public int last_page;
 			public int segment_count;
-			public byte* segments = (byte*) CRuntime.malloc(255 * sizeof(byte));
+			public byte[] segments = new byte[255];
 			public byte page_flag;
 			public byte bytes_in_seg;
 			public byte first_decode;
@@ -86,6 +89,36 @@ namespace StbVorbisSharp
 			public CRCscan[] scan = new CRCscan[4];
 			public int channel_buffer_start;
 			public int channel_buffer_end;
+
+			internal ArrayBuffer<float> FloatBuffer = new ArrayBuffer<float>(1024);
+			internal ArrayBuffer2D<IntPtr> PtrBuffer2D = new ArrayBuffer2D<IntPtr>(8, 256);
+		}
+
+		[StructLayout(LayoutKind.Sequential)]
+		public struct Floor1
+		{
+			public byte partitions;
+			public fixed byte partition_class_list[32];
+			public fixed byte class_dimensions[16];
+			public fixed byte class_subclasses[16];
+			public fixed byte class_masterbooks[16];
+			public fixed short subclass_books[16 * 8];
+			public fixed ushort Xlist[31 * 8 + 2];
+			public fixed byte sorted_order[31 * 8 + 2];
+			public fixed byte neighbors[(31 * 8 + 2) * 2];
+			public byte floor1_multiplier;
+			public byte rangebits;
+			public int values;
+		}
+
+		[StructLayout(LayoutKind.Explicit)]
+		public struct Floor
+		{
+			[FieldOffset(0)]
+			public Floor0 floor0;
+
+			[FieldOffset(0)]
+			public Floor1 floor1;
 		}
 
 		public static sbyte[,] channel_position =
@@ -98,41 +131,6 @@ namespace StbVorbisSharp
 			{2 | 1, 2 | 4 | 1, 4 | 1, 2 | 1, 4 | 1, 0},
 			{2 | 1, 2 | 4 | 1, 4 | 1, 2 | 1, 4 | 1, 2 | 4 | 1}
 		};
-
-		public static uint get_bits(stb_vorbis f, int n)
-		{
-			uint z;
-			if (f.valid_bits < 0) return 0;
-			if (f.valid_bits < n)
-			{
-				if (n > 24)
-				{
-					z = get_bits(f, 24);
-					z += get_bits(f, n - 24) << 24;
-					return z;
-				}
-
-				if (f.valid_bits == 0) f.acc = 0;
-				while (f.valid_bits < n)
-				{
-					var z2 = get8_packet_raw(f);
-					if (z2 == -1)
-					{
-						f.valid_bits = -1;
-						return 0;
-					}
-
-					f.acc += (uint) (z2 << f.valid_bits);
-					f.valid_bits += 8;
-				}
-			}
-
-			if (f.valid_bits < 0) return 0;
-			z = (uint) (f.acc & ((1 << n) - 1));
-			f.acc >>= n;
-			f.valid_bits -= n;
-			return z;
-		}
 
 		public static short[] decode_vorbis_from_memory(byte[] input, out int sampleRate, out int chan)
 		{

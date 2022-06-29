@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace StbVorbisSharp
+namespace Hebron.Runtime
 {
 	internal static unsafe class CRuntime
 	{
@@ -13,20 +13,21 @@ namespace StbVorbisSharp
 
 		public static void* malloc(ulong size)
 		{
-			return malloc((long) size);
+			return malloc((long)size);
 		}
 
 		public static void* malloc(long size)
 		{
-			var ptr = Marshal.AllocHGlobal((int) size);
+			var ptr = Marshal.AllocHGlobal((int)size);
+			MemoryStats.Allocated();
 
 			return ptr.ToPointer();
 		}
 
 		public static void memcpy(void* a, void* b, long size)
 		{
-			var ap = (byte*) a;
-			var bp = (byte*) b;
+			var ap = (byte*)a;
+			var bp = (byte*)b;
 			for (long i = 0; i < size; ++i)
 			{
 				*ap++ = *bp++;
@@ -35,7 +36,7 @@ namespace StbVorbisSharp
 
 		public static void memcpy(void* a, void* b, ulong size)
 		{
-			memcpy(a, b, (long) size);
+			memcpy(a, b, (long)size);
 		}
 
 		public static void memmove(void* a, void* b, long size)
@@ -60,14 +61,14 @@ namespace StbVorbisSharp
 
 		public static void memmove(void* a, void* b, ulong size)
 		{
-			memmove(a, b, (long) size);
+			memmove(a, b, (long)size);
 		}
 
 		public static int memcmp(void* a, void* b, long size)
 		{
 			var result = 0;
-			var ap = (byte*) a;
-			var bp = (byte*) b;
+			var ap = (byte*)a;
+			var bp = (byte*)b;
 			for (long i = 0; i < size; ++i)
 			{
 				if (*ap != *bp)
@@ -84,27 +85,33 @@ namespace StbVorbisSharp
 
 		public static int memcmp(void* a, void* b, ulong size)
 		{
-			return memcmp(a, b, (long) size);
+			return memcmp(a, b, (long)size);
 		}
 
 		public static int memcmp(byte* a, byte[] b, ulong size)
 		{
 			fixed (void* bptr = b)
 			{
-				return memcmp(a, bptr, (long) size);
+				return memcmp(a, bptr, (long)size);
 			}
 		}
 
 		public static void free(void* a)
 		{
+			if (a == null)
+			{
+				return;
+			}
+
 			var ptr = new IntPtr(a);
 			Marshal.FreeHGlobal(ptr);
+			MemoryStats.Freed();
 		}
 
 		public static void memset(void* ptr, int value, long size)
 		{
-			byte* bptr = (byte*) ptr;
-			var bval = (byte) value;
+			byte* bptr = (byte*)ptr;
+			var bval = (byte)value;
 			for (long i = 0; i < size; ++i)
 			{
 				*bptr++ = bval;
@@ -113,7 +120,7 @@ namespace StbVorbisSharp
 
 		public static void memset(void* ptr, int value, ulong size)
 		{
-			memset(ptr, value, (long) size);
+			memset(ptr, value, (long)size);
 		}
 
 		public static uint _lrotl(uint x, int y)
@@ -136,7 +143,7 @@ namespace StbVorbisSharp
 
 		public static void* realloc(void* a, ulong newSize)
 		{
-			return realloc(a, (long) newSize);
+			return realloc(a, (long)newSize);
 		}
 
 		public static int abs(int v)
@@ -153,7 +160,7 @@ namespace StbVorbisSharp
 		public static double frexp(double number, int* exponent)
 		{
 			var bits = BitConverter.DoubleToInt64Bits(number);
-			var exp = (int) ((bits & DBL_EXP_MASK) >> DBL_MANT_BITS);
+			var exp = (int)((bits & DBL_EXP_MASK) >> DBL_MANT_BITS);
 			*exponent = 0;
 
 			if (exp == 0x7ff || number == 0D)
@@ -167,7 +174,7 @@ namespace StbVorbisSharp
 					// Subnormal, scale number so that it is in [1, 2).
 					number *= BitConverter.Int64BitsToDouble(0x4350000000000000L); // 2^54
 					bits = BitConverter.DoubleToInt64Bits(number);
-					exp = (int) ((bits & DBL_EXP_MASK) >> DBL_MANT_BITS);
+					exp = (int)((bits & DBL_EXP_MASK) >> DBL_MANT_BITS);
 					*exponent = exp - 1022 - 54;
 				}
 
@@ -185,7 +192,7 @@ namespace StbVorbisSharp
 
 		public static float fabs(double a)
 		{
-			return (float) Math.Abs(a);
+			return (float)Math.Abs(a);
 		}
 
 		public static double ceil(double a)
@@ -252,7 +259,7 @@ namespace StbVorbisSharp
 			void* pivot = data + size * left;
 			var i = left - 1;
 			var j = right + 1;
-			for (;;)
+			for (; ; )
 			{
 				do
 				{
@@ -287,7 +294,7 @@ namespace StbVorbisSharp
 
 		public static void qsort(void* data, ulong count, ulong size, QSortComparer comparer)
 		{
-			qsortInternal((byte*) data, (long) size, comparer, 0, (long) count - 1);
+			qsortInternal((byte*)data, (long)size, comparer, 0, (long)count - 1);
 		}
 
 		public static double sqrt(double val)
@@ -302,7 +309,6 @@ namespace StbVorbisSharp
 
 		public static ulong strlen(sbyte* str)
 		{
-			ulong res = 0;
 			var ptr = str;
 
 			while (*ptr != '\0')
@@ -310,7 +316,7 @@ namespace StbVorbisSharp
 				ptr++;
 			}
 
-			return ((ulong) ptr - (ulong) str - 1);
+			return ((ulong)ptr - (ulong)str - 1);
 		}
 	}
 }

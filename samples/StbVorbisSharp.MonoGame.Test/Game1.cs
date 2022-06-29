@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using FontStashSharp;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
@@ -19,6 +20,7 @@ namespace StbVorbisSharp.MonoGame.Test
 		private Vorbis _vorbis;
 		private DynamicSoundEffectInstance _effect;
 		private bool _startedPlaying;
+		private FontSystem _fontSystem;
 
 		public Game1()
 		{
@@ -90,6 +92,9 @@ namespace StbVorbisSharp.MonoGame.Test
 			// Create a new SpriteBatch, which can be used to draw textures.
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
 
+			_fontSystem = new FontSystem();
+			_fontSystem.AddFont(File.ReadAllBytes(@"DroidSans.ttf"));
+
 			// TODO: use this.Content to load your game content here
 			LoadSong();
 
@@ -103,6 +108,7 @@ namespace StbVorbisSharp.MonoGame.Test
 		protected override void UnloadContent()
 		{
 			// TODO: Unload any non ContentManager content here
+			_vorbis.Dispose();
 		}
 
 		/// <summary>
@@ -135,6 +141,13 @@ namespace StbVorbisSharp.MonoGame.Test
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 
 			// TODO: Add your drawing code here
+			var font = _fontSystem.GetFont(32);
+			_spriteBatch.Begin();
+
+			_spriteBatch.DrawString(font, $"Allocations: {StbVorbis.NativeAllocations}", Vector2.Zero, Color.White);
+
+			_spriteBatch.End();
+			
 			base.Draw(gameTime);
 		}
 	}
