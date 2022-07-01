@@ -2,8 +2,11 @@
 
 namespace Hebron.Runtime
 {
-	internal unsafe static class Utility
+	internal static unsafe class Utility
 	{
-		public static byte *ToBytePointer(this IntPtr ptr) => (byte*)ptr.ToPointer();
+		public static byte* ToBytePointer(this IntPtr ptr)
+		{
+			return (byte*) ptr.ToPointer();
+		}
 	}
 }

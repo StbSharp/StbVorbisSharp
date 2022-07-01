@@ -2,45 +2,40 @@
 {
 	internal class ArrayBuffer<T>
 	{
-		private T[] _array;
+		public T[] Array { get; private set; }
 
-		public T[] Array => _array;
-
-		public int Capacity => _array.Length;
+		public int Capacity => Array.Length;
 
 		public T this[int index]
 		{
-			get => _array[index];
-			set => _array[index] = value;
+			get => Array[index];
+			set => Array[index] = value;
 		}
 
 		public T this[ulong index]
 		{
-			get => _array[index];
-			set => _array[index] = value;
+			get => Array[index];
+			set => Array[index] = value;
 		}
 
 		public ArrayBuffer(int capacity)
 		{
-			_array = new T[capacity];
+			Array = new T[capacity];
 		}
 
 		public void EnsureSize(int required)
 		{
-			if (_array.Length >= required) return;
+			if (Array.Length >= required) return;
 
 			// Realloc
-			var oldData = _array;
+			var oldData = Array;
 
-			var newSize = _array.Length;
-			while (newSize < required)
-			{
-				newSize *= 2;
-			}
+			var newSize = Array.Length;
+			while (newSize < required) newSize *= 2;
 
-			_array = new T[newSize];
+			Array = new T[newSize];
 
-			System.Array.Copy(oldData, _array, oldData.Length);
+			System.Array.Copy(oldData, Array, oldData.Length);
 		}
 	}
 }

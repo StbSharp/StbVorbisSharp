@@ -5,14 +5,8 @@ namespace Hebron.Runtime
 	internal static class MemoryStats
 	{
 		private static int _allocations;
-		 
-		public static int Allocations
-		{
-			get
-			{
-				return _allocations;
-			}
-		}
+
+		public static int Allocations => _allocations;
 
 		internal static void Allocated()
 		{

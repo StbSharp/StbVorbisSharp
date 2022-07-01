@@ -5,6 +5,8 @@ namespace Hebron.Runtime
 {
 	internal static unsafe class CRuntime
 	{
+		public delegate int QSortComparer(void* a, void* b);
+
 		public const long DBL_EXP_MASK = 0x7ff0000000000000L;
 		public const int DBL_MANT_BITS = 52;
 		public const long DBL_SGN_MASK = -1 - 0x7fffffffffffffffL;
@@ -13,12 +15,12 @@ namespace Hebron.Runtime
 
 		public static void* malloc(ulong size)
 		{
-			return malloc((long)size);
+			return malloc((long) size);
 		}
 
 		public static void* malloc(long size)
 		{
-			var ptr = Marshal.AllocHGlobal((int)size);
+			var ptr = Marshal.AllocHGlobal((int) size);
 			MemoryStats.Allocated();
 
 			return ptr.ToPointer();
@@ -26,17 +28,14 @@ namespace Hebron.Runtime
 
 		public static void memcpy(void* a, void* b, long size)
 		{
-			var ap = (byte*)a;
-			var bp = (byte*)b;
-			for (long i = 0; i < size; ++i)
-			{
-				*ap++ = *bp++;
-			}
+			var ap = (byte*) a;
+			var bp = (byte*) b;
+			for (long i = 0; i < size; ++i) *ap++ = *bp++;
 		}
 
 		public static void memcpy(void* a, void* b, ulong size)
 		{
-			memcpy(a, b, (long)size);
+			memcpy(a, b, (long) size);
 		}
 
 		public static void memmove(void* a, void* b, long size)
@@ -52,29 +51,23 @@ namespace Hebron.Runtime
 
 			finally
 			{
-				if (temp != null)
-				{
-					free(temp);
-				}
+				if (temp != null) free(temp);
 			}
 		}
 
 		public static void memmove(void* a, void* b, ulong size)
 		{
-			memmove(a, b, (long)size);
+			memmove(a, b, (long) size);
 		}
 
 		public static int memcmp(void* a, void* b, long size)
 		{
 			var result = 0;
-			var ap = (byte*)a;
-			var bp = (byte*)b;
+			var ap = (byte*) a;
+			var bp = (byte*) b;
 			for (long i = 0; i < size; ++i)
 			{
-				if (*ap != *bp)
-				{
-					result += 1;
-				}
+				if (*ap != *bp) result += 1;
 
 				ap++;
 				bp++;
@@ -85,23 +78,20 @@ namespace Hebron.Runtime
 
 		public static int memcmp(void* a, void* b, ulong size)
 		{
-			return memcmp(a, b, (long)size);
+			return memcmp(a, b, (long) size);
 		}
 
 		public static int memcmp(byte* a, byte[] b, ulong size)
 		{
 			fixed (void* bptr = b)
 			{
-				return memcmp(a, bptr, (long)size);
+				return memcmp(a, bptr, (long) size);
 			}
 		}
 
 		public static void free(void* a)
 		{
-			if (a == null)
-			{
-				return;
-			}
+			if (a == null) return;
 
 			var ptr = new IntPtr(a);
 			Marshal.FreeHGlobal(ptr);
@@ -110,17 +100,14 @@ namespace Hebron.Runtime
 
 		public static void memset(void* ptr, int value, long size)
 		{
-			byte* bptr = (byte*)ptr;
-			var bval = (byte)value;
-			for (long i = 0; i < size; ++i)
-			{
-				*bptr++ = bval;
-			}
+			var bptr = (byte*) ptr;
+			var bval = (byte) value;
+			for (long i = 0; i < size; ++i) *bptr++ = bval;
 		}
 
 		public static void memset(void* ptr, int value, ulong size)
 		{
-			memset(ptr, value, (long)size);
+			memset(ptr, value, (long) size);
 		}
 
 		public static uint _lrotl(uint x, int y)
@@ -130,10 +117,7 @@ namespace Hebron.Runtime
 
 		public static void* realloc(void* a, long newSize)
 		{
-			if (a == null)
-			{
-				return malloc(newSize);
-			}
+			if (a == null) return malloc(newSize);
 
 			var ptr = new IntPtr(a);
 			var result = Marshal.ReAllocHGlobal(ptr, new IntPtr(newSize));
@@ -143,7 +127,7 @@ namespace Hebron.Runtime
 
 		public static void* realloc(void* a, ulong newSize)
 		{
-			return realloc(a, (long)newSize);
+			return realloc(a, (long) newSize);
 		}
 
 		public static int abs(int v)
@@ -152,7 +136,7 @@ namespace Hebron.Runtime
 		}
 
 		/// <summary>
-		/// This code had been borrowed from here: https://github.com/MachineCognitis/C.math.NET
+		///     This code had been borrowed from here: https://github.com/MachineCognitis/C.math.NET
 		/// </summary>
 		/// <param name="number"></param>
 		/// <param name="exponent"></param>
@@ -160,11 +144,13 @@ namespace Hebron.Runtime
 		public static double frexp(double number, int* exponent)
 		{
 			var bits = BitConverter.DoubleToInt64Bits(number);
-			var exp = (int)((bits & DBL_EXP_MASK) >> DBL_MANT_BITS);
+			var exp = (int) ((bits & DBL_EXP_MASK) >> DBL_MANT_BITS);
 			*exponent = 0;
 
 			if (exp == 0x7ff || number == 0D)
+			{
 				number += number;
+			}
 			else
 			{
 				// Not zero and finite.
@@ -174,7 +160,7 @@ namespace Hebron.Runtime
 					// Subnormal, scale number so that it is in [1, 2).
 					number *= BitConverter.Int64BitsToDouble(0x4350000000000000L); // 2^54
 					bits = BitConverter.DoubleToInt64Bits(number);
-					exp = (int)((bits & DBL_EXP_MASK) >> DBL_MANT_BITS);
+					exp = (int) ((bits & DBL_EXP_MASK) >> DBL_MANT_BITS);
 					*exponent = exp - 1022 - 54;
 				}
 
@@ -192,7 +178,7 @@ namespace Hebron.Runtime
 
 		public static float fabs(double a)
 		{
-			return (float)Math.Abs(a);
+			return (float) Math.Abs(a);
 		}
 
 		public static double ceil(double a)
@@ -236,8 +222,6 @@ namespace Hebron.Runtime
 			return number * Math.Pow(2, exponent);
 		}
 
-		public delegate int QSortComparer(void* a, void* b);
-
 		private static void qsortSwap(byte* data, long size, long pos1, long pos2)
 		{
 			var a = data + size * pos1;
@@ -259,7 +243,7 @@ namespace Hebron.Runtime
 			void* pivot = data + size * left;
 			var i = left - 1;
 			var j = right + 1;
-			for (; ; )
+			for (;;)
 			{
 				do
 				{
@@ -271,10 +255,7 @@ namespace Hebron.Runtime
 					--j;
 				} while (comparer(data + size * j, pivot) > 0);
 
-				if (i >= j)
-				{
-					return j;
-				}
+				if (i >= j) return j;
 
 				qsortSwap(data, size, i, j);
 			}
@@ -294,7 +275,7 @@ namespace Hebron.Runtime
 
 		public static void qsort(void* data, ulong count, ulong size, QSortComparer comparer)
 		{
-			qsortInternal((byte*)data, (long)size, comparer, 0, (long)count - 1);
+			qsortInternal((byte*) data, (long) size, comparer, 0, (long) count - 1);
 		}
 
 		public static double sqrt(double val)
@@ -311,12 +292,9 @@ namespace Hebron.Runtime
 		{
 			var ptr = str;
 
-			while (*ptr != '\0')
-			{
-				ptr++;
-			}
+			while (*ptr != '\0') ptr++;
 
-			return ((ulong)ptr - (ulong)str - 1);
+			return (ulong) ptr - (ulong) str - 1;
 		}
 	}
 }

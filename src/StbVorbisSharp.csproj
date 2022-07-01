@@ -1,15 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <Authors>StbVorbisSharpTeam</Authors>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Description>C# port of the stb_vorbis.c</Description>
-    <PackageLicenseUrl>Public Domain</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/StbSharp/StbVorbisSharp</PackageProjectUrl>
-    <Version>1.22.3</Version>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
-	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-  </PropertyGroup>  
+    <PropertyGroup>
+        <Authors>StbVorbisSharpTeam</Authors>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <Description>C# port of the stb_vorbis.c</Description>
+        <PackageLicenseUrl>Public Domain</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/StbSharp/StbVorbisSharp</PackageProjectUrl>
+        <Version>1.22.3</Version>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
 </Project>
