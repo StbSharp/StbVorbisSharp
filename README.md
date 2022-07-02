@@ -17,6 +17,9 @@ There are two ways of referencing StbVorbis in the project:
        
       * Include *.cs from StbVorbis/src/StbVorbis directly in the project. In this case, it might make sense to add STBSHARP_INTERNAL build compilation symbol to the project, so StbVorbis classes would become internal.
 
+# Usage
+See the sample [StbVorbisSharp.MonoGame.Test](https://github.com/StbSharp/StbVorbisSharp/tree/master/samples/StbVorbisSharp.MonoGame.Test)
+
 # License
 Public Domain
 
