@@ -67,8 +67,7 @@ namespace StbVorbisSharp
 			public int channels;
 			public int codebook_count;
 			public Codebook* codebooks;
-			public sbyte** comment_list;
-			public int comment_list_length;
+			public string[] comment_list;
 			public uint current_loc;
 			public int current_loc_valid;
 			public int discard_samples_deferred;
@@ -121,7 +120,7 @@ namespace StbVorbisSharp
 			public int temp_offset;
 			public uint total_samples;
 			public int valid_bits;
-			public sbyte* vendor;
+			public string vendor;
 			public float*[] window = new float*[2];
 		}
 
