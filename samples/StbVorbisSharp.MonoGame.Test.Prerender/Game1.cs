@@ -1,9 +1,4 @@
-﻿#define DECODER_TYPE_VORBIS
-// #define DECODER_TYPE_VORBIS_NATIVE
-// #define DECODER_TYPE_NVORBIS
-
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.Reflection;
 using FontStashSharp;
@@ -45,14 +40,9 @@ namespace StbVorbisSharp.MonoGame.Test
 			path = Path.Combine(path, "music.ogg");
 			var buffer = File.ReadAllBytes(path);
 
-#if DECODER_TYPE_VORBIS || DECODER_TYPE_VORBIS_NATIVE
 			int sampleRate, channels;
 
-#if DECODER_TYPE_VORBIS
 			var audioShort = StbVorbis.decode_vorbis_from_memory(buffer, out sampleRate, out channels);
-#else
-			var audioShort = StbNative.Vorbis.decode_vorbis_from_memory(buffer, out sampleRate, out channels);
-#endif
 
 			byte[] audioData = new byte[audioShort.Length * 2];
 			for (var i = 0; i < audioShort.Length; ++i)
@@ -68,47 +58,6 @@ namespace StbVorbisSharp.MonoGame.Test
 				audioData[i * 2 + 0] = b2;
 				audioData[i * 2 + 1] = b1;
 			}
-#elif DECODER_TYPE_NVORBIS
-			int sampleRate, channels;
-			var allSamples = new List<float>();
-			using (var vorbis = new NVorbis.VorbisReader("music.ogg"))
-			{
-				// get the channels & sample rate
-				channels = vorbis.Channels;
-				sampleRate = vorbis.SampleRate;
-
-				// OPTIONALLY: get a TimeSpan indicating the total length of the Vorbis stream
-				var totalTime = vorbis.TotalTime;
-
-				// create a buffer for reading samples
-				var readBuffer = new float[channels * sampleRate / 5];  // 200ms
-
-				// get the initial position (obviously the start)
-				var position = TimeSpan.Zero;
-
-				// go grab samples
-				int cnt;
-				while ((cnt = vorbis.ReadSamples(readBuffer, 0, readBuffer.Length)) > 0)
-				{
-					for(var i = 0; i < cnt; ++i)
-					{
-						allSamples.Add(readBuffer[i]);
-					}
-				}
-			}
-
-			var audioData = new byte[allSamples.Count * channels];
-			for (var i = 0; i < allSamples.Count; ++i)
-			{
-				var temp = (int)(32767f * allSamples[i]);
-
-				if (temp > short.MaxValue) temp = short.MaxValue;
-				else if (temp < short.MinValue) temp = short.MinValue;
-
-				audioData[i * 2 + 0] = (byte)(temp & 256);
-				audioData[i * 2 + 1] = (byte)(temp >> 8);
-			}
-			#endif
 
 			soundEffect = new SoundEffect(audioData, sampleRate, (AudioChannels)channels);
 			_instance = soundEffect.CreateInstance();
