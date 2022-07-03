@@ -3,6 +3,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="..\Assets\DroidSans.ttf" Link="DroidSans.ttf">
@@ -18,5 +19,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\StbVorbisSharp.csproj" />
+    <ProjectReference Include="..\Stb.Native\Stb.Native.vcxproj" />
   </ItemGroup>
 </Project>
