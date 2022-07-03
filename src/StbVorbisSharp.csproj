@@ -5,7 +5,7 @@
         <Description>C# port of the stb_vorbis.c</Description>
         <PackageLicenseUrl>Public Domain</PackageLicenseUrl>
         <PackageProjectUrl>https://github.com/StbSharp/StbVorbisSharp</PackageProjectUrl>
-        <Version>1.22.3</Version>
+        <Version>1.22.4</Version>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 

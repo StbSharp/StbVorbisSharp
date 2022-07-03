@@ -27,12 +27,16 @@ namespace StbVorbisSharp
 			{
 				int c, s;
 				length = stb_vorbis_decode_memory(b, input.Length, &c, &s, ref result);
+				if (length == -1)
+				{
+					throw new Exception("Unable to decode");
+				}
 
 				chan = c;
 				sampleRate = s;
 			}
 
-			var output = new short[length];
+			var output = new short[length * chan];
 			Marshal.Copy(new IntPtr(result), output, 0, output.Length);
 			CRuntime.free(result);
 

@@ -3019,8 +3019,8 @@ namespace StbVorbisSharp
 			f.channel_buffer_end = left + len;
 			if (channels != null)
 				*channels = f.channels;
-			if (output != null)
-				output = f.outputs;
+				
+			output = f.outputs;
 			return len;
 		}
 
