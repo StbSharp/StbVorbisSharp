@@ -6,7 +6,7 @@ C# port of stb_vorbis.c
 
 # Adding Reference
 There are two ways of referencing StbVorbisSharp in the project:
-1. Through nuget: `install-package StbVorbisSharp`
+1. Through nuget: https://www.nuget.org/packages/StbVorbisSharp/
 2. As submodule:
     
     a. `git submodule add https://github.com/StbSharp/StbVorbisSharp.git`
